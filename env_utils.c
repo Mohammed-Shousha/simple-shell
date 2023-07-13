@@ -1,27 +1,26 @@
 #include "main.h"
 
 /**
- * _getenv - Gets an environmental variable.
+ * _getenv - gets an environmental variable
  *
- * @var: the name of the environmental variable.
+ * @var: the name of the environmental variable
  *
- * Return: Null if environmental variable doesnt exist.
- *		   Otherwise, value of environmental variable.
+ * Return: value of the environmental variable or NULL if not found
  */
 
 char *_getenv(char *var)
 {
-	int idx, len;
+	int i, len;
 
 	if (var == NULL)
 		return (NULL);
 
 	len = strlen(var);
 
-	for (idx = 0; environ[idx]; idx++)
+	for (i = 0; environ[i]; i++)
 	{
-		if (strncmp(var, environ[idx], len) == 0)
-			return (environ[idx] + len + 1);
+		if (strncmp(var, environ[i], len) == 0)
+			return (environ[i] + len + 1);
 	}
 
 	return (NULL);

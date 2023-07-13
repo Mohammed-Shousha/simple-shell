@@ -37,10 +37,12 @@ int main(int argc, char **argv)
  *
  * @line_buffer: the buffer that contains the command and it's arguments
  * @prog_name: string - program name
+ * 
+ * Return: void
  */
 void run_cmd(char *line_buffer, char *prog_name)
 {
-	int n, j;
+	int n, i;
 	char *argv[MAX_ARGS_COUNT + 1];
 
 	n = parse_cmd(line_buffer, argv);
@@ -52,8 +54,8 @@ void run_cmd(char *line_buffer, char *prog_name)
 	else if (n != 0)
 		run_sys_cmd(prog_name, argv, n);
 
-	for (j = 0; j < n; j++)
-		free(argv[j]);
+	for (i = 0; i < n; i++)
+		free(argv[i]);
 }
 
 
@@ -64,32 +66,32 @@ void run_cmd(char *line_buffer, char *prog_name)
  * @argv: array of strings storing the command and it's arguments
  * @n: number of arguments in argv
  *
- * Return: void.
+ * Return: void
  */
 void run_sys_cmd(char *prog_name, char **argv, int n)
 {
 	char *argv_0;
-	int child_pid, child_status, j;
+	int child_pid, child_status, i;
 
 	argv_0 = argv[0];
 	argv[0] = parse_path(argv[0]);
 	free(argv_0);
 
 	child_pid = fork();
+
 	if (child_pid == -1)
 		perror(prog_name);
 
-	if (child_pid == 0)
+	if (child_pid == 0 && execve(argv[0], argv, environ) == -1)
 	{
-		if (execve(argv[0], argv, environ) == -1)
-		{
-			perror(prog_name);
-			for (j = 0; j < n; j++)
-				free(argv[j]);
+		perror(prog_name);
 
-			_exit(1);
-		}
+		for (i = 0; i < n; i++)
+			free(argv[i]);
+
+		_exit(1);
 	}
-	else if (child_pid > 0)
+
+	if (child_pid > 0)
 		wait(&child_status);
 }
