@@ -21,7 +21,11 @@ int main(int argc, char **argv)
 	{
 		printf("$ ");
 		if (getline(&line_buffer, &line_size, stdin) != -1)
+		{
+			if (line_buffer[0] == '\n')
+				continue;
 			run_cmd(line_buffer, argv[0]);
+		}
 		else
 			break;
 	}
@@ -37,7 +41,7 @@ int main(int argc, char **argv)
  *
  * @line_buffer: the buffer that contains the command and it's arguments
  * @prog_name: string - program name
- * 
+ *
  * Return: void
  */
 void run_cmd(char *line_buffer, char *prog_name)
