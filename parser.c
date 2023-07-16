@@ -1,4 +1,5 @@
 #include "main.h"
+#include "string_functions"
 
 /**
  * parse_cmd - extracts the command and arguments
@@ -27,7 +28,7 @@ int parse_cmd(char *cmd, char **argv)
 			if (len)
 			{
 				arg[len] = '\0';
-				argv[argc++] = strdup(arg);
+				argv[argc++] = _strdup(arg);
 				len = 0;
 			}
 		}
@@ -44,7 +45,7 @@ int parse_cmd(char *cmd, char **argv)
 	if (len)
 	{
 		arg[len] = '\0';
-		argv[argc++] = strdup(arg);
+		argv[argc++] = _strdup(arg);
 	}
 
 	argv[argc] = NULL;
@@ -70,7 +71,7 @@ char *parse_path(char *cmd)
 	if (value == NULL)
 		return (cmd);
 
-	len = strlen(cmd);
+	len = _strlen(cmd);
 
 	while (value[i] != '\0')
 	{
@@ -100,5 +101,5 @@ char *parse_path(char *cmd)
 		k = ++i;
 	}
 
-	return (strdup(cmd));
+	return (_strdup(cmd));
 }
