@@ -1,4 +1,5 @@
 #include "main.h"
+#include "_putchar.c"
 
 /**
  * exit_shell - exits the shell
@@ -26,8 +27,13 @@ void exit_shell(char *line_buffer, char **argv)
  */
 void _env(void)
 {
-	int i;
+	int i, j;
 
 	for (i = 0; environ[i]; i++)
-		printf("%s\n", environ[i]);
+	{
+		for (j = 0; environ[i][j]; j++)
+			_putchar(environ[i][j]);
+
+		_putchar('\n');
+	}
 }

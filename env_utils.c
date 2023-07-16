@@ -1,5 +1,5 @@
 #include "main.h"
-#include "string_functions"
+#include "string_functions.c"
 
 /**
  * _getenv - gets an environmental variable
