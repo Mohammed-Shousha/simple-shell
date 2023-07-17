@@ -1,4 +1,6 @@
 #include "main.h"
+#include "string_functions.c"
+#include "_putchar.c"
 
 /**
  * main - entry point
@@ -19,7 +21,8 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		printf("$ ");
+		_putchar('$');
+		_putchar(' ');
 		if (getline(&line_buffer, &line_size, stdin) != -1)
 		{
 			if (line_buffer[0] == '\n')
@@ -31,7 +34,7 @@ int main(int argc, char **argv)
 	}
 
 	free(line_buffer);
-	printf("\n");
+	_putchar('\n');
 	return (0);
 }
 
@@ -51,9 +54,9 @@ void run_cmd(char *line_buffer, char *prog_name)
 
 	n = parse_cmd(line_buffer, argv);
 
-	if (strcmp(argv[0], "exit") == 0)
+	if (_strcmp(argv[0], "exit") == 0)
 		exit_shell(line_buffer, argv);
-	else if (strcmp(argv[0], "env") == 0)
+	else if (_strcmp(argv[0], "env") == 0 || _strcmp(argv[0], "printenv") == 0)
 		_env();
 	else if (n != 0)
 		run_sys_cmd(prog_name, argv, n);

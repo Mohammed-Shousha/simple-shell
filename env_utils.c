@@ -1,4 +1,5 @@
 #include "main.h"
+#include "string_functions.c"
 
 /**
  * _getenv - gets an environmental variable
@@ -15,11 +16,11 @@ char *_getenv(char *var)
 	if (var == NULL)
 		return (NULL);
 
-	len = strlen(var);
+	len = _strlen(var);
 
 	for (i = 0; environ[i]; i++)
 	{
-		if (strncmp(var, environ[i], len) == 0)
+		if (_strncmp(var, environ[i], len) == 0)
 			return (environ[i] + len + 1);
 	}
 
