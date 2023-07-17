@@ -105,8 +105,8 @@ char *_strdup(char *src)
 {
 	char *dupstr;
 
-	dubstr = malloc(_strlen(src) + 1);
-	if (dubstr == NULL)
+	dupstr = malloc(_strlen(src) + 1);
+	if (dupstr == NULL)
 		return (NULL);
 
 	_strcpy(dupstr, src);

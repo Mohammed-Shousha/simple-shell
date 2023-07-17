@@ -1,6 +1,4 @@
 #include "main.h"
-#include "string_functions.c"
-#include "_putchar.c"
 
 /**
  * main - entry point
