@@ -1,5 +1,4 @@
 #include "main.h"
-#include "string_functions.c"
 
 /**
  * parse_cmd - extracts the command and arguments

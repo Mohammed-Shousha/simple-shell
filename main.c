@@ -1,6 +1,4 @@
 #include "main.h"
-#include "string_functions.c"
-#include "_putchar.c"
 
 /**
  * main - entry point
@@ -55,7 +53,12 @@ void run_cmd(char *line_buffer, char *prog_name)
 	n = parse_cmd(line_buffer, argv);
 
 	if (_strcmp(argv[0], "exit") == 0)
-		exit_shell(line_buffer, argv);
+	{
+		if (argv[1] == NULL)
+			exit_shell(line_buffer, argv);
+		else
+			exit_shell_with_status(line_buffer, argv, _atoi(argv[1]));
+	}
 	else if (_strcmp(argv[0], "env") == 0 || _strcmp(argv[0], "printenv") == 0)
 		_env();
 	else if (n != 0)

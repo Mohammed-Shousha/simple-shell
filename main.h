@@ -15,6 +15,15 @@
 
 extern char **environ;
 
+int _putchar(char c);
+
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+int _strncmp(char *s1, char *s2, int n);
+char *_strdup(char *src);
+int _atoi(char *s);
+
 void run_cmd(char *line_buffer, char *prog_name);
 void run_sys_cmd(char *prog_name, char **argv, int n);
 
@@ -22,6 +31,7 @@ int parse_cmd(char *cmd, char **argv);
 char *parse_path(char *cmd);
 
 void exit_shell(char *line_buffer, char **argv);
+void exit_shell_with_status(char *line_buffer, char **argv, int status);
 void _env(void);
 
 char *_getenv(char *var);
