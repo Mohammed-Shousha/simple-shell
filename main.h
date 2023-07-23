@@ -15,15 +15,6 @@
 
 extern char **environ;
 
-int _putchar(char c);
-
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
-int _strncmp(char *s1, char *s2, int n);
-char *_strdup(char *src);
-int _atoi(char *s);
-
 void run_cmd(char *line_buffer, char *prog_name);
 void run_sys_cmd(char *prog_name, char **argv, int n);
 
@@ -42,6 +33,6 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *src);
 int _putchar(char c);
-
+int _atoi(char *s);
 
 #endif
