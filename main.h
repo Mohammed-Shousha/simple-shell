@@ -37,6 +37,4 @@ int _putchar(char c);
 int _atoi(char *s);
 void print_str(char *s);
 
-void sigint_handler(int sig);
-
 #endif

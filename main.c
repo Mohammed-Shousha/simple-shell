@@ -9,7 +9,6 @@
  * Return: 0 on success
  */
 
-int sigint_received = 0;
 
 int main(int argc, char **argv)
 {
@@ -19,9 +18,8 @@ int main(int argc, char **argv)
 	(void)argv;
 	(void)argc;
 
-	signal(SIGINT, sigint_handler);
 
-	while (!sigint_received)
+	while (1)
 	{
 		print_str("$ ");
 		if (getline(&line_buffer, &line_size, stdin) != -1)
@@ -103,16 +101,4 @@ void run_sys_cmd(char *prog_name, char **argv, int n)
 
 	if (child_pid > 0)
 		wait(&child_status);
-}
-
-
-/**
- * sigint_handler - handle SIGINT signal
- *
- * @sig: signal value
- */
-void sigint_handler(int sig)
-{
-	sigint_received = 1;
-	(void)sig;
 }
