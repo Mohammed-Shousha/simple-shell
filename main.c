@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 	(void)argv;
 	(void)argc;
 
+	signal(SIGINT, sigint_handler);
+
 	while (1)
 	{
 		print_str("$ ");
@@ -99,4 +101,16 @@ void run_sys_cmd(char *prog_name, char **argv, int n)
 
 	if (child_pid > 0)
 		wait(&child_status);
+}
+
+
+/**
+ * sigint_handler - handle SIGINT signal
+ *
+ * @sig: signal value
+ */
+void sigint_handler(int sig)
+{
+	(void)sig;
+	write(STDOUT_FILENO, "\n$ ", 3);
 }
