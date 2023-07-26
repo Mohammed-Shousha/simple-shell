@@ -9,6 +9,8 @@
  * Return: 0 on success
  */
 
+int sigint_received = 0;
+
 int main(int argc, char **argv)
 {
 	size_t line_size = 0;
@@ -19,7 +21,7 @@ int main(int argc, char **argv)
 
 	signal(SIGINT, sigint_handler);
 
-	while (1)
+	while (!sigint_received)
 	{
 		print_str("$ ");
 		if (getline(&line_buffer, &line_size, stdin) != -1)
@@ -111,6 +113,6 @@ void run_sys_cmd(char *prog_name, char **argv, int n)
  */
 void sigint_handler(int sig)
 {
+	sigint_received = 1;
 	(void)sig;
-	write(STDOUT_FILENO, "\n$ ", 3);
 }
