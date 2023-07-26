@@ -34,5 +34,6 @@ int _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *src);
 int _putchar(char c);
 int _atoi(char *s);
+void print_str(char *s);
 
 #endif
