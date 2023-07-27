@@ -25,8 +25,10 @@ int _atoi(char *s)
 		}
 		else if (s[i] == '-' && num == 0)
 			neg_count++;
-		else if (!(s[i] >= '0' && s[i] <= '9') && (num > 0))
-			break;
+		else if (!(s[i] >= '0' && s[i] <= '9') && (num >= 0))
+		{
+			return (-98);
+		}
 	}
 	if (neg_count % 2 != 0 && num != -2147483648)
 		num = num * -1;
@@ -46,6 +48,13 @@ void exit_shell_with_status(char *line_buffer, char **argv, int status)
 {
 	int i;
 
+	if (status < 0)
+	{
+		print_str("./hsh: 1: exit: Illegal number: ");
+		print_str(argv[1]);
+		print_str("\n");
+		status = 2;
+	}
 	for (i = 0; argv[i] != NULL; i++)
 		free(argv[i]);
 
