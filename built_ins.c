@@ -16,7 +16,7 @@ void exit_shell(char *line_buffer, char **argv)
 		free(argv[i]);
 
 	free(line_buffer);
-	exit(2);
+	exit(0);
 }
 
 /**
