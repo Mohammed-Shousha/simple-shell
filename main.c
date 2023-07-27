@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	}
 	free(line_buffer);
 	if (isatty(STDIN_FILENO))
-		print_str("$\n");
+		print_str("\n");
 	return (0);
 }
 
