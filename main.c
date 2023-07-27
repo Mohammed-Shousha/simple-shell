@@ -21,7 +21,8 @@ int main(int argc, char **argv)
 
 	while (1)
 	{
-		print_str("$ ");
+		if (isatty(STDIN_FILENO))
+			print_str("$ ");
 		if (getline(&line_buffer, &line_size, stdin) != -1)
 		{
 			if (line_buffer[0] == '\n')
@@ -34,7 +35,8 @@ int main(int argc, char **argv)
 	}
 
 	free(line_buffer);
-	print_str("\n");
+	if (isatty(STDIN_FILENO))
+		print_str("\n");
 	return (0);
 }
 
