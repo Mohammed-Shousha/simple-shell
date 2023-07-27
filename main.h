@@ -36,5 +36,6 @@ char *_strdup(char *src);
 int _putchar(char c);
 int _atoi(char *s);
 void print_str(char *s);
+void print_str_in_stderr(char *s);
 
 #endif

@@ -50,9 +50,9 @@ void exit_shell_with_status(char *line_buffer, char **argv, int status)
 
 	if (status < 0)
 	{
-		print_str("./hsh: 1: exit: Illegal number: ");
-		print_str(argv[1]);
-		print_str("\n");
+		print_str_in_stderr("./hsh: 1: exit: Illegal number: ");
+		print_str_in_stderr(argv[1]);
+		print_str_in_stderr("\n");
 		status = 2;
 	}
 	for (i = 0; argv[i] != NULL; i++)

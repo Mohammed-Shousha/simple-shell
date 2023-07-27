@@ -27,3 +27,17 @@ void print_str(char *s)
 
 	write(STDOUT_FILENO, s, i);
 }
+
+/**
+ * print_str_in_stderr - prints a string to stderr
+ *
+ * @s: pointer to an array of chars
+ */
+void print_str_in_stderr(char *s)
+{
+	int i;
+
+	i = _strlen(s);
+
+	write(STDERR_FILENO, s, i);
+}
